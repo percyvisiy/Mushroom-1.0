@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvk3r1orbogrx"]
+
+[ext_resource type="Script" uid="uid://qynm5ao5rwrn" path="res://scripts/bomb.gd" id="1_1a61f"]
+[ext_resource type="Texture2D" uid="uid://b1fph1hlfod17" path="res://assets/Sprites [Enemies]/Bomb/Bomb.png" id="1_2hd65"]
+[ext_resource type="PackedScene" uid="uid://kybn8c02hsxv" path="res://scenes/killzone.tscn" id="2_wcugo"]
+[ext_resource type="AudioStream" uid="uid://dxpttb5mgp1pk" path="res://assets/sounds/explosion.wav" id="4_kjhlw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcugo"]
+atlas = ExtResource("1_2hd65")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nouaf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcugo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihpno"]
+size = Vector2(8, 11.25)
+
+[node name="octopus" type="Area2D"]
+script = ExtResource("1_1a61f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, 0.5000005)
+scale = Vector2(0.75000006, 0.71875)
+sprite_frames = SubResource("SpriteFrames_nouaf")
+frame_progress = 0.08041982
+
+[node name="RayCastright" type="RayCast2D" parent="."]
+
+[node name="RayCastleft" type="RayCast2D" parent="."]
+
+[node name="killzone" parent="." instance=ExtResource("2_wcugo")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+position = Vector2(4, 0.625)
+shape = SubResource("RectangleShape2D_ihpno")
+
+[node name="explosion sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_kjhlw")
+bus = &"sound effects"
