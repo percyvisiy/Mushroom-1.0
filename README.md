@@ -1,6 +1,5 @@
 # Mushroom-1.0
 2D game
-# Mushroom-1.0 🍄
 
 Mushroom-1.0 is a simple game I built while teaching myself game development with Godot and GDScript. It was an opportunity to experiment with game mechanics, player movement, and debugging while learning by building.
 
